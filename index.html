@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#123f9b">
+<title>Uniraj Guess Paper | UPI Checkout</title>
+<style>
+:root{--blue:#1646a0;--blue2:#0d2f75;--green:#159447;--ink:#18243a;--muted:#68758a;--line:#e5eaf2}
+*{box-sizing:border-box}body{margin:0;background:#f3f6fb;color:var(--ink);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+header{background:linear-gradient(135deg,var(--blue2),#2360c7);color:#fff;padding:22px 16px 28px;text-align:center}
+.brand{font-size:22px;font-weight:800;letter-spacing:.2px}.sub{font-size:13px;opacity:.88;margin-top:4px}
+.wrap{max-width:520px;margin:-14px auto 30px;padding:0 14px}
+.secure{display:flex;justify-content:center;align-items:center;gap:7px;background:#e9f8ef;color:#087638;border:1px solid #ccebd7;border-radius:30px;padding:9px 12px;font-size:13px;font-weight:700;margin:0 auto 14px;width:max-content;max-width:100%}
+.card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:14px;box-shadow:0 5px 20px rgba(20,48,90,.05)}
+h2{font-size:17px;margin:0 0 14px}.rowline{display:flex;justify-content:space-between;gap:12px;padding:8px 0;border-bottom:1px dashed var(--line);font-size:14px}.rowline:last-child{border:0}.muted{color:var(--muted)}.value{text-align:right;font-weight:650;overflow-wrap:anywhere}.amount{font-size:27px;color:var(--blue);font-weight:850}
+.timer{font-size:13px;color:#9a5a00;background:#fff6e7;border:1px solid #f6dfb6;border-radius:10px;padding:10px;text-align:center;margin-top:12px}
+.tabs{display:flex;background:#edf2fa;padding:4px;border-radius:12px;margin-bottom:16px}.tab{flex:1;border:0;border-radius:9px;padding:11px 7px;background:transparent;color:#506078;font-weight:700;font-size:13px}.tab.active{background:#fff;color:var(--blue);box-shadow:0 1px 5px #cbd5e3}
+.qrbox{display:flex;justify-content:center;padding:8px}.qrbox img{width:220px;height:220px;max-width:100%;object-fit:contain;border:1px solid var(--line);border-radius:12px;padding:8px}
+.center{text-align:center}.hint{font-size:13px;color:var(--muted);line-height:1.55;margin:10px 0}
+.apps{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:13px}.app{border:1px solid var(--line);border-radius:12px;padding:10px 4px;text-align:center;font-size:11px;font-weight:700;color:#35435a}.app span{display:block;font-size:22px;margin-bottom:4px}
+.paygrid{display:grid;grid-template-columns:1fr 1fr;gap:10px}.paylink{display:flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border:1px solid var(--line);border-radius:12px;padding:13px 8px;color:#20334f;font-size:13px;font-weight:750;background:#fff}
+.primary{display:block;text-decoration:none;text-align:center;background:var(--green);color:#fff;font-weight:800;padding:15px 12px;border-radius:13px;margin-top:14px;box-shadow:0 4px 10px rgba(21,148,71,.16)}
+.notice{font-size:13px;line-height:1.6;color:#526078;text-align:center;margin:12px 3px 0}
+footer{text-align:center;color:#8a95a7;font-size:11px;padding:8px 0 22px}
+[hidden]{display:none!important}
+@media(max-width:360px){.apps{grid-template-columns:repeat(2,1fr)}.brand{font-size:20px}}
+</style>
+</head>
+<body>
+<header><div class="brand">UNIRAJ GUESS PAPERS</div><div class="sub">Simple • Fast • Secure UPI Checkout</div></header>
+<main class="wrap">
+  <div class="secure">🛡️ 100% Secure UPI Checkout</div>
+  <section class="card">
+    <h2>Order Summary</h2>
+    <div class="rowline"><span class="muted">Order ID</span><span class="value" id="order">UGP-TEST01</span></div>
+    <div class="rowline"><span class="muted">Paper</span><span class="value" id="title">Uniraj Guess Paper</span></div>
+    <div class="rowline"><span class="muted">Course / University</span><span class="value" id="course">University of Rajasthan</span></div>
+    <div class="rowline"><span class="muted">Payable Amount</span><span class="amount" id="amount">₹19</span></div>
+    <div class="timer">⏳ Complete your payment within <strong id="clock">10:00</strong></div>
+  </section>
+  <section class="card">
+    <div class="tabs"><button class="tab active" id="qrTab" type="button">Scan QR Code</button><button class="tab" id="upiTab" type="button">Pay via UPI App</button></div>
+    <div id="qrPanel">
+      <h2 class="center">Scan & Pay with any UPI app</h2>
+      <div class="qrbox"><img id="qr" alt="UPI payment QR code"></div>
+      <p class="hint center">Open your UPI app and scan this QR code to pay the exact order amount.</p>
+      <div class="apps"><div class="app"><span>🟣</span>PhonePe</div><div class="app"><span>🔵</span>Google Pay</div><div class="app"><span>🔷</span>Paytm</div><div class="app"><span>🟢</span>BHIM</div></div>
+    </div>
+    <div id="upiPanel" hidden>
+      <h2 class="center">Choose your UPI app</h2>
+      <div class="paygrid">
+        <a class="paylink" id="phonepe" href="#">🟣 PhonePe</a>
+        <a class="paylink" id="gpay" href="#">🔵 Google Pay</a>
+        <a class="paylink" id="paytm" href="#">🔷 Paytm</a>
+        <a class="paylink" id="anyupi" href="#">🟢 Any UPI App</a>
+      </div>
+      <p class="hint center">If an app does not open, use the QR code tab or copy the UPI payment details from your UPI app.</p>
+    </div>
+  </section>
+  <section class="card">
+    <h2>Payment Confirmation</h2>
+    <p class="notice">After completing payment, tap the green button below and upload your payment screenshot in the Telegram bot. Your money is 100% safe.</p>
+    <a class="primary" href="https://t.me/UnirajGuessPaper_bot">✅ I Have Paid — Verify in Bot</a>
+    <p class="notice">Your order will be marked as paid only after admin verification. The PDF will be delivered in the bot after approval.</p>
+  </section>
+  <footer>UNIRAJ GUESS PAPERS · Secure payment assistance</footer>
+</main>
+<script>
+(function(){
+ const p=new URLSearchParams(location.search);
+ const order=p.get('order')||'UGP-TEST01';
+ const amountRaw=p.get('amount')||'19';
+ const title=p.get('title')||'Uniraj Guess Paper';
+ const course=p.get('course')||'University of Rajasthan';
+ const amount=Number(String(amountRaw).replace(/[^0-9.]/g,''));
+ const safeAmount=Number.isFinite(amount)&&amount>0?amount:19;
+ const pa='Madhav889@ibl';
+ const note=('Uniraj '+order).slice(0,70);
+ const uri='upi://pay?pa='+encodeURIComponent(pa)+'&pn='+encodeURIComponent('Uniraj Guess Papers')+'&am='+encodeURIComponent(safeAmount.toFixed(2))+'&cu=INR&tn='+encodeURIComponent(note);
+ document.getElementById('order').textContent=order;
+ document.getElementById('title').textContent=title;
+ document.getElementById('course').textContent=course;
+ document.getElementById('amount').textContent='₹'+safeAmount.toLocaleString('en-IN',{maximumFractionDigits:2});
+ document.getElementById('qr').src='https://api.qrserver.com/v1/create-qr-code/?size=260x260&data='+encodeURIComponent(uri);
+ ['phonepe','gpay','paytm','anyupi'].forEach(id=>document.getElementById(id).href=uri);
+ const qrTab=document.getElementById('qrTab'),upiTab=document.getElementById('upiTab'),qrPanel=document.getElementById('qrPanel'),upiPanel=document.getElementById('upiPanel');
+ function show(which){const qr=which==='qr';qrPanel.hidden=!qr;upiPanel.hidden=qr;qrTab.classList.toggle('active',qr);upiTab.classList.toggle('active',!qr)}
+ qrTab.addEventListener('click',()=>show('qr'));upiTab.addEventListener('click',()=>show('upi'));
+ let left=600;const clock=document.getElementById('clock');
+ function tick(){const m=Math.floor(left/60),s=left%60;clock.textContent=String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');if(left>0)left--}
+ tick();setInterval(tick,1000);
+})();
+</script>
+</body>
+</html>
