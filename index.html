@@ -14,7 +14,7 @@ header{background:linear-gradient(145deg,#071629,var(--navy));color:#fff;text-al
 .card{background:#fff;border:1px solid var(--line);border-radius:18px;padding:18px;margin-bottom:14px;box-shadow:0 8px 26px #0b1f3a0c}
 h2{font-size:17px;color:var(--navy);margin:0 0 13px}.row{display:flex;justify-content:space-between;gap:14px;padding:9px 0;border-bottom:1px dashed var(--line);font-size:13px}.row:last-child{border:0}.key{color:var(--muted);flex:0 0 38%}.val{text-align:right;font-weight:700;overflow-wrap:anywhere;flex:1}.paper{font-size:14px;line-height:1.45}.amount{font-size:29px;font-weight:900;color:var(--navy);letter-spacing:-.5px}
 .qr{display:block;width:224px;height:224px;max-width:100%;margin:12px auto;border:1px solid var(--line);border-radius:14px;padding:8px;background:#fff}
-.center{text-align:center}.muted{color:var(--muted);font-size:13px}.apps{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:15px}.app{display:block;text-align:center;padding:12px 6px;border:1px solid var(--line);border-radius:12px;color:var(--navy);font-weight:800;text-decoration:none;font-size:13px;background:#fff}.app b{display:block;font-size:21px;margin-bottom:3px}
+.center{text-align:center}.muted{color:var(--muted);font-size:13px}.apps{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-top:15px}.app{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;min-height:100px;padding:12px 6px;border:1px solid var(--line);border-radius:14px;color:var(--navy);font-weight:800;text-decoration:none;font-size:13px;background:#fff;box-shadow:0 3px 10px #0b1f3a08;transition:transform .15s,box-shadow .15s}.app:active{transform:scale(.97)}.app:hover{box-shadow:0 7px 18px #0b1f3a14}.app-icon{width:42px;height:42px;display:grid;place-items:center}.app-icon svg{width:100%;height:100%;display:block}.app-name{font-size:13px;letter-spacing:.1px}
 .steps{padding-left:20px;margin:8px 0;color:#46546a;font-size:13px}.steps li{padding:4px 0}.cta{display:block;text-decoration:none;text-align:center;color:#102b1c;background:linear-gradient(110deg,#d8efdf,#f6e7b1);border:1px solid #b8d6b7;border-radius:13px;padding:15px 12px;font-weight:900;margin-top:14px}
 .support{color:var(--navy);font-weight:800;text-decoration:none}.supportline{font-size:13px;line-height:1.8;color:#526078}.foot{text-align:center;color:#8b95a5;font-size:11px;padding:8px 0 22px}
 @media(max-width:380px){.brand{font-size:20px}.row{font-size:12px}.apps{gap:6px}.app{font-size:12px}}
@@ -35,9 +35,12 @@ h2{font-size:17px;color:var(--navy);margin:0 0 13px}.row{display:flex;justify-co
 <section class="card"><h2 class="center">Pay using UPI</h2><p class="muted center">Scan the QR code with any UPI app. The amount is set for this order.</p>
 <img class="qr" id="qr" alt="Dynamic UPI payment QR code">
 <div class="apps">
-<a class="app" id="phonepe" href="#"><b>🟣</b>PhonePe</a>
-<a class="app" id="gpay" href="#"><b>🔵</b>Google Pay</a>
-<a class="app" id="paytm" href="#"><b>🔷</b>Paytm</a>
+<a class="app" id="phonepe" href="#" aria-label="Pay with PhonePe">
+<span class="app-icon"><svg viewBox="0 0 48 48" role="img" aria-label="PhonePe"><circle cx="24" cy="24" r="23" fill="#5F259F"/><path d="M17 11h11.2c7.1 0 11.3 3.7 11.3 9.7 0 6.1-4.4 10-11.4 10h-3.7v7.5H17V11zm7.4 6.3v7.2h3.5c2.7 0 4.1-1.2 4.1-3.6 0-2.3-1.4-3.6-4.1-3.6h-3.5z" fill="#fff"/></svg></span><span class="app-name">PhonePe</span></a>
+<a class="app" id="gpay" href="#" aria-label="Pay with Google Pay">
+<span class="app-icon"><svg viewBox="0 0 48 48" role="img" aria-label="Google Pay"><path fill="#4285F4" d="M44 24.5c0-1.4-.1-2.7-.4-4H24v7.6h11.2a9.6 9.6 0 0 1-4.2 6.3v5.1h6.8C41.8 35.8 44 30.6 44 24.5z"/><path fill="#34A853" d="M24 45c5.8 0 10.7-1.9 14.2-5.2l-6.8-5.1c-1.9 1.3-4.3 2.1-7.4 2.1-5.7 0-10.5-3.8-12.2-8.9H4.8v5.3A21 21 0 0 0 24 45z"/><path fill="#FBBC05" d="M11.8 27.9a12.6 12.6 0 0 1 0-7.8v-5.3H4.8a21 21 0 0 0 0 18.4l7-5.3z"/><path fill="#EA4335" d="M24 11.2c3.2 0 6.1 1.1 8.4 3.3l6.2-6.2C34.8 4.9 29.8 3 24 3A21 21 0 0 0 4.8 14.8l7 5.3c1.7-5.1 6.5-8.9 12.2-8.9z"/></svg></span><span class="app-name">Google Pay</span></a>
+<a class="app" id="paytm" href="#" aria-label="Pay with Paytm">
+<span class="app-icon"><svg viewBox="0 0 48 48" role="img" aria-label="Paytm"><rect x="2" y="2" width="44" height="44" rx="13" fill="#EAF5FF"/><path d="M11 13h17.5c7 0 11 3.6 11 9.4 0 5.9-4.2 9.6-11.2 9.6h-9v5H11V13zm8.3 6.8v5.5h8.8c2 0 3.1-1 3.1-2.8 0-1.7-1.1-2.7-3.1-2.7h-8.8z" fill="#00B9F1"/><path d="M11 13h8.3v24H11z" fill="#002970"/></svg></span><span class="app-name">Paytm</span></a>
 </div>
 <p class="muted center">If a payment app does not open, scan the QR code from that app instead.</p></section>
 <section class="card"><h2>How to complete payment</h2>
